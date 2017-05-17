@@ -2,11 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class CharacterController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private int score;
     public int Score { get { return score; } set { score = value; } }
-    public Rigidbody myBody;
+    private Rigidbody myBody;
     private Vector3 myForward;
 
     public float fartPower;
@@ -28,6 +28,7 @@ public class CharacterController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        myBody = GetComponent<Rigidbody>();
         score = 0;
         fartPower = 100;
         fartPowerMAX = 100;
@@ -113,9 +114,10 @@ public class CharacterController : MonoBehaviour
         if (lefTurnDuration <= 45f)
         {
             transform.Rotate(new Vector3(0, -1, 0) * turnRate);
-            lefTurnDuration -= 1 * turnRate;
+            lefTurnDuration -= 1f * turnRate;
             if (lefTurnDuration <= 0f)
             {
+
                 turnLeft = false;
                 lefTurnDuration = 45f;
             }
@@ -126,7 +128,7 @@ public class CharacterController : MonoBehaviour
         if (rightTurnDuration <= 45f)
         {
             transform.Rotate(new Vector3(0, 1, 0) * turnRate);
-            rightTurnDuration -= 1 * turnRate;
+            rightTurnDuration -= 1f * turnRate;
             if (rightTurnDuration <= 0f)
             {
                 turnRight = false;

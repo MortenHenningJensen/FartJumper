@@ -8,7 +8,7 @@ public class ScoreUI : MonoBehaviour
 {
 
     [SerializeField]
-    private CharacterController player;
+    private Player player;
     [SerializeField]
     private Text score;
 

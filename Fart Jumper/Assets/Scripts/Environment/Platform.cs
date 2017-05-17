@@ -5,7 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     [SerializeField]
-    private CharacterController player;
+    private Player player;
     [SerializeField]
     private int scoreToAdd = 1;
     private bool hitByPlayer;
@@ -13,7 +13,7 @@ public class Platform : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<CharacterController>() && !hitByPlayer)
+        if (other.GetComponent<Player>() && !hitByPlayer)
         {
             hitByPlayer = true;
             player.Score += scoreToAdd;
