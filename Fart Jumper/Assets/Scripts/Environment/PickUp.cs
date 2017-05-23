@@ -17,15 +17,9 @@ public class PickUp : MonoBehaviour
     private bool moveDown;
 
     public PICKUPTYPE myType;
-    private Transform transform;
 
     private void Start()
     {
-        if (minimumYValue == 0 && maximumYValue == 0)
-        {
-            maximumYValue = 1f;
-        }
-        transform = GetComponent<Transform>();
         moveUp = true;
     }
 
@@ -61,23 +55,23 @@ public class PickUp : MonoBehaviour
 
     private void MoveUpAndDown()
     {
-        if (transform.position.y >= maximumYValue)
+        if (gameObject.transform.position.y >= maximumYValue)
         {
             moveDown = true;
             moveUp = false;
         }
-        if (transform.position.y <= minimumYValue)
+        if (gameObject.transform.position.y <= minimumYValue)
         {
             moveUp = true;
             moveDown = false;
         }
         if (moveUp)
         {
-            transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime);
+            gameObject.transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime);
         }
         if (moveDown)
         {
-            transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime);
+            gameObject.transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime);
         }
     }
 }

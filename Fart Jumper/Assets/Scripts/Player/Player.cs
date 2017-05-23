@@ -145,6 +145,31 @@ public class Player : MonoBehaviour
         GodFarts = false;
     }
 
+    public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "MovingPlatform")
+        {
+            transform.parent = collision.transform;
+            //transform.Rotate(new Vector3(0, -1.2f, 0));
+        }
+        else
+        {
+            transform.parent = null;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "MovingPlatform")
+        {
+            transform.parent = null;
+            //transform.Rotate(new Vector3(0, -1.2f, 0));
+        }
+
+    }
+
+
+
     #region InputControls
 
     public void SteadyJumpEnter()
